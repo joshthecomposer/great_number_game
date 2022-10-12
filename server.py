@@ -3,10 +3,12 @@ import random
 app = Flask(__name__)
 app.secret_key = 'keep it secret, keep it safe'
 
+NUM_TRIES_ALLOWED = 100
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if 'total' in session:
-        if session['total'] >= 5:
+        if session['total'] >= NUM_TRIES_ALLOWED:
             return redirect('/lose')
     if 'guess' not in session:
         session['secret_number'] = int(random.randint(0, 100))
@@ -28,6 +30,14 @@ def check_guess():
 
 @app.route('/success', methods=['GET', 'POST'])
 def success():
+    session['total'] += 1
+    if request.method == 'POST':
+        if 'current_winner' in session:
+            session['current_winner'].append(request.form.get('current_winner'))
+        elif 'current_winner' not in session:
+            session['current_winner'] = []
+            session['current_winner'].append(request.form.get('current_winner'))
+        return redirect('/leaderboard')
     return render_template('success.html')
 
 @app.route('/reset', methods=['GET', 'POST'])
@@ -37,7 +47,12 @@ def reset():
 
 @app.route('/lose', methods=['GET', 'POST'])
 def lose():
-    return render_template('lose.html')
+    return render_template('lose.html', NUM_TRIES_ALLOWED = NUM_TRIES_ALLOWED)
+
+@app.route('/leaderboard', methods=['GET', 'POST'])
+def leaderboard():
+    session['secret_number'] = int(random.randint(0, 100))
+    return render_template('leaderboard.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

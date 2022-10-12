@@ -12,23 +12,24 @@
         <div class="row justify-content-center mb-3">
             <div class="col-6">
                 <h1 class="text-center text-light">The Great Number Game!</h1>
-                <p class="text-center text-light">I am thinking of a number between 1 and 100</p>
             </div>
         </div>
         <div class="row justify-content-center mb-3">
             <div class="col-3 bg-success rounded align-items-center text-center" style="height:auto; display:block">
                 <h2 class="text-white">Success!</h2>
                 <h4 class="text-white">{{session['guess']}} was the number!</h4>
-            </div>
-        </div>
-        <div class="row justify-content-center mb-3">
-            <div class="col-3">
                 <h4 class="text-white text-center">You guessed {{session['total']}} times!</h4>
             </div>
         </div>
-        <div class="row justify-content-center mb-3">
-            <a href="/reset" class="btn btn-primary btn-lg btn-block col-2">Play again!</a>
-        </div>
+        <form action="" method="POST">
+            <div class="row justify-content-center mb-3">
+                <div class="col-3 text-center">
+                    <label class="text-light text-center" for="current_winner">Submit your name to the Hall of Fame</label>
+                    <input class="form-control mb-4" type="text" name="current_winner" placeholder="Name here">
+                    <button class="btn btn-primary btn-lg form-control" value="Submit" type="submit">Submit to Hall of Fame</button>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>

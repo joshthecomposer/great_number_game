@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Great Number Game!</title>
+</head>
+<body style="background-color:#121212;">
+    <div class="container justify-content-center">
+        <div class="row justify-content-center mb-3">
+            <div class="col-12">
+                <h1 class="text-center text-light">The Glorious Great Number Hall of Fame!</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <div class="col-8">
+                {%for user in session['current_winner']%}
+                <h4 class="text-light text-center mb-4">{{ user }} <span class="bg-light text-black rounded px-2 py-1"> {{total}} guesses </span></h4>
+                {%endfor%}
+            </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+                <a href="/" class="btn btn-primary btn-lg btn-block col-2">Home</a>
+        </div>
+    </div>
+</body>
+</html>

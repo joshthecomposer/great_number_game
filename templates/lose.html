@@ -27,12 +27,15 @@
         </div>
         <div class="row justify-content-center mb-3">
             <div class="col-6">
-                <h4 class="text-white text-center">You can only guess 5 times!</h4>
+                <h4 class="text-white text-center">You can only guess {{ NUM_TRIES_ALLOWED }} times!</h4>
                 <p class="text-white text-center">(the number was {{session['secret_number']}} by the way...)</p>
             </div>
         </div>
         <div class="row justify-content-center mb-3">
             <a href="/reset" class="btn btn-primary btn-lg btn-block col-2">Play again!</a>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <a href="/leaderboard" class="btn btn-secondary btn-lg btn-block col-2 mt-5">Leaderboard</a>
         </div>
     </div>
 </body>
