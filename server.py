@@ -3,7 +3,7 @@ import random
 app = Flask(__name__)
 app.secret_key = 'keep it secret, keep it safe'
 
-NUM_TRIES_ALLOWED = 100
+NUM_TRIES_ALLOWED = 5
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
